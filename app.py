@@ -14,7 +14,7 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/foo": {"origins": "*"}})
 
 
-@app.route('/<id>', methods=['GET'])
+@app.route("/<id>", methods=['GET'])
 def index(id):
   barra = codigodebarra()
   if len(sys.argv) > 1:
