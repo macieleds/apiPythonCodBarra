@@ -17,7 +17,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
 
 
-@app.route('/<id>', methods=['GET'])
+@app.route("/<id>", methods=['GET'])
 @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 @app.after_request
 def add_headers(response):
