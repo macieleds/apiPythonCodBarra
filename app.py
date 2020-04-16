@@ -11,21 +11,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
-app.config['CORS_HEADERS'] = 'Content-Type'
-
-cors = CORS(app, resources={r"/foo": {"origins": "http://localhost:port"}})
+cors = CORS(app, resources={r"/foo": {"origins": "*"}})
 
 
-@app.route("/<id>", methods=['GET'])
-@cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
-@app.after_request
-def add_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:port')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    return response
-
-
+@app.route('/<id>', methods=['GET'])
 def index(id):
   barra = codigodebarra()
   if len(sys.argv) > 1:
