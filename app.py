@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/foo": {"origins": "*"}})
+cors = CORS(app,resource={r"/*":{"origens":"*"}})
 
 
 @app.route("/<id>", methods=['GET'])
