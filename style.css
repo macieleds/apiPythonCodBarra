@@ -1,0 +1,95 @@
+h1 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif; 
+    color: #ffffff;
+    font-size: 16px;
+    align-content: center;
+    justify-content: center;
+}
+h2 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif; 
+    color: #ffffff;
+    font-size: 13px;
+    display: inline-block;
+    align-content: space-around;
+}
+body {
+    background-color: #008080;
+    margin: 0;
+    padding: 0;
+    /* background-image: url("image.jpg"); */
+}
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 100px;
+}
+p{
+    color: #ffffff;
+}
+input {
+    /* background-color: #ffffff;
+    color: black;
+    font-size: 18px; */
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    background-color: "rgba(255,255,255,0.3)";
+    border-radius : 25;
+    font-size: 18px;
+    color: '#ffffff';
+    margin: 10;
+}
+button {
+    background-color: rgb(13, 197, 96);
+    height: 50px;
+    width: 90px;
+    color: #ffffff;
+    /* padding: 20px; */
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: transparent ;
+    margin-left: 9px;
+}
+nav{
+    background-color: #004949;
+    height: 50px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    margin: 0;
+    overflow: hidden;    
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    /* This allow us to arrange list items in a row, without using float */
+    display: inline-block;
+    list-style-type: none;
+    color: rgb(253, 250, 250);
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+ 
+/* Create a style for the first level items */
+nav > ul > li > a {
+    color: rgb(253, 250, 250);
+    background-color:#004949;
+    display: block;
+    line-height: 2em;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+    align-content: center;
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+.avatar {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+

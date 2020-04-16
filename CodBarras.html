@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        outline:0
+    }
+    body{
+        background-color: #008080;
+        margin: 0;
+        padding: 0;
+        text-rendering:optimizeLegibility !important;
+        -webkit-font-smoothing: antialiased !important;
+        font-family:sans-serif;
+    }
+    div{
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    }
+    .form{
+        margin-top: 20px;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+    }
+    input {
+        flex: 1;
+        height: 55px;
+        padding: 0 20px;
+        background: #fff;
+        border: 2px solid;
+        font-size: 18px;
+        color: #444;
+        border-radius: 3px;
+    }
+    button {
+        cursor: pointer;
+        height: 55px;
+        padding: 0 20px;
+        margin-left: 10px;
+        background: #40c751;
+        color: #fff;
+        border: 0;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 3px; 
+    }
+    button:hover{
+        background: black;
+    }
+    .alert {
+    margin: 11px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    padding: 1rem 2rem;
+    margin: 0 0 20px 0;
+    border-radius: 4px;
+}
+.alert.alert-danger {
+    background:red;
+    border: 1px solid black;
+    color: #fff;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Código de Barras</title>
+</head>
+<body>
+    <div>  
+        <img  src="barras-7.gif" alt="Github Compare" style="width: 300px;"/>
+        <label style="color: white;">Gerador de Código de Barras</label>
+        <container class="form" >
+          <input type="text" placeholder="Digite o valor do código de barras" id="txtCodbarras"/>
+          <button id="btnGerar"  >Gerar</button>
+        </container>
+        <div id="load" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;/* background: rgb(241, 242, 243); */display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <rect x="17.5" y="27.3961" width="15" height="45.2078" fill="#93dbe9">
+              <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+              <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
+            </rect>
+            <rect x="42.5" y="26.2553" width="15" height="47.4894" fill="#689cc5">
+              <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+              <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
+            </rect>
+            <rect x="67.5" y="22.597" width="15" height="54.806" fill="#5e6fa3">
+              <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+              <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
+            </rect>
+            </svg>
+        </div>
+        <div id="codBarras"></div>
+        <div class="alert alert-danger" id="alert" role="alert" style="display: none">
+                <strong>Preencha o campo acima para que possa gerar seu Código de Barras</strong>
+        </div>
+        <button id="btnDownload" style="display: none;" >Download</button>
+
+    </div> 
+
+</body>
+<script>
+    
+var btnGerar = document.getElementById('btnGerar')
+var alert = document.getElementById('alert')
+var divcodBarras = document.getElementById("codBarras")
+var btnDownload = document.getElementById("btnDownload")
+var load = document.getElementById("load")
+
+btnGerar.onclick = function() {
+    load.style.display = "block"
+            setTimeout(function () {
+                carregarCodBarras()
+                load.style.display = "none"
+            }, 150);
+} 
+
+
+btnDownload.onclick = function() {
+    window.location.href = document.getElementsByTagName("img")[1].src
+    var a = document.createElement('a');
+    a.href = document.getElementsByTagName("img")[1].src
+    a.download = "codBarras";
+    a.click();
+} 
+
+function carregarCodBarras(){
+    divcodBarras.style.display = "none"
+    var codBarrasValor = document.getElementById("txtCodbarras").value
+    if (codBarrasValor ==""){
+        alert.style.display = "block"
+        divcodBarras.style.display = "none"
+        btnDownload.style.display = "none"
+        return
+    }
+    alert.style.display = "none"
+    divcodBarras.style.display = "block"
+    btnDownload.style.display = "block"
+
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET", `localhost:5000/${codBarrasValor}`, true)
+    ajax.send()
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var data = ajax.responseText	
+            divcodBarras.innerHTML = data
+        }   
+    }
+}
+
+</script>
+</html>
