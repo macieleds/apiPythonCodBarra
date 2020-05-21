@@ -12,4 +12,4 @@ Grupo:
 </ul>
 
 
-# Para execução do app abrir a máquina virtual - Apontar e executar o arquivo .bat comando no terminal em ambiente Windows (sem aspas) ".\venv\Scripts\activate.bat". Em terminais Linux apontar para o arquivo "activate.bat" e executar. Com a máquina virtual ativada, executar (sem aspas) "python app.py" e abrir o arquivo HTML - CodBarras.html no navegador.
+## Para execução do app abrir a máquina virtual - Apontar e executar o arquivo .bat comando no terminal em ambiente Windows (sem aspas) ".\venv\Scripts\activate.bat". Em terminais Linux apontar para o arquivo "activate.bat" e executar. Com a máquina virtual ativada, executar (sem aspas) "python app.py" e abrir o arquivo HTML - CodBarras.html no navegador.
